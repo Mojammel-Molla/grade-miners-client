@@ -1,25 +1,33 @@
 import { Link, NavLink } from 'react-router-dom';
 import UserImg from '../assets/userImage.jpg';
+import { AuthContext } from '../provider/AuthProvider';
+import { useContext } from 'react';
 const Navbar = () => {
+  const { user, logOutUser } = useContext(AuthContext);
   const navLinks = (
     <>
-      <li>
-        <NavLink to="/" className="mr-5">
+      <li className="mr-5">
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? 'text-green-600 underline' : ' '
+          }
+          to="/"
+        >
           Home
         </NavLink>
       </li>
-      <li>
-        <NavLink to="/assignments" className="mr-5">
-          Assignments
-        </NavLink>
+      <li className="mr-5">
+        <NavLink to="/assignments">Assignments</NavLink>
       </li>
-      <li>
-        <NavLink to="" className="mr-5">
-          Add Assignments
-        </NavLink>
+      <li className="mr-5">
+        <NavLink to="">Add Assignments</NavLink>
       </li>
     </>
   );
+
+  const handleLogOut = () => {
+    logOutUser();
+  };
   return (
     <div className="navbar bg-base-100 shadow-md mt-5">
       <div className="navbar-start">
@@ -47,19 +55,23 @@ const Navbar = () => {
             {navLinks}
           </ul>
         </div>
-        <a className="btn btn-ghost font-extrabold lg:text-4xl">Grade Miners</a>
+        <a className="  font-extrabold lg:text-4xl">
+          Grade <span className="text-green-600">Miners</span>
+        </a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{navLinks}</ul>
       </div>
       <div className="navbar-end">
-        <img className="w-10 h-10 rounded-full" src={UserImg} />
+        <img className="w-10 h-10 mr-3 rounded-full" src={UserImg} />
 
         <Link to="/login">
-          <button className="btn">Log in</button>
-          {/* <a onClick={handleLogOut} className="btn">
+          <button
+            onClick={handleLogOut}
+            className="btn bg-green-600 text-white"
+          >
             {user ? 'Log out' : 'Login'}
-          </a> */}
+          </button>
         </Link>
       </div>
     </div>

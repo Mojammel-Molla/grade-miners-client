@@ -39,11 +39,6 @@ const AuthProvider = ({ children }) => {
     return signOut(auth);
   };
 
-  // Log in with github
-  const handleGithubLogIn = () => {
-    setLoader(true);
-    return signInWithPopup(auth, githubProvider);
-  };
   // Log in with Google
   const handleGoogleLogIn = () => {
     setLoader(true);
@@ -76,7 +71,6 @@ const AuthProvider = ({ children }) => {
     createUser,
     logInUser,
     logOutUser,
-    handleGithubLogIn,
     handleGoogleLogIn,
     handleUserProfile,
   };

@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../provider/AuthProvider';
+import toast, { Toaster } from 'react-hot-toast';
 
 const Register = () => {
   const { createUser } = useContext(AuthContext);
@@ -13,13 +14,25 @@ const Register = () => {
     const photo = form.photo.value;
     console.log(name, email, password, photo);
 
-    createUser(email, password)
-      .then(res => {
-        console.log(res.user);
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    if (!/^.{6,32}$/.test(password)) {
+      toast.error('password is too short');
+      return;
+    } else if (!/(?=.*\W)/.test(password)) {
+      toast.error('password should have special character');
+      return;
+    } else if (!/(?=.*[A-Z])/.test(password)) {
+      toast.error('password should have capital letter');
+      return;
+    } else {
+      createUser(email, password)
+        .then(res => {
+          console.log(res.user);
+          toast.success('User created successfully');
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
   };
   return (
     <div className="max-w-lg mx-auto lg:mt-20 justify-center items-center">
@@ -88,6 +101,7 @@ const Register = () => {
           <button className="btn text-white bg-green-600">Register</button>
         </div>
       </form>
+      <Toaster position="top-center" reverseOrder={false} />
     </div>
   );
 };
