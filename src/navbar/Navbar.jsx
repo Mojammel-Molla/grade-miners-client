@@ -18,8 +18,6 @@ const Navbar = () => {
         <NavLink to="" className="mr-5">
           Add assignment
         </NavLink>
-
-        <NavLink to="/login">Log in</NavLink>
       </li>
     </>
   );
@@ -50,15 +48,16 @@ const Navbar = () => {
             {navLinks}
           </ul>
         </div>
-        <a className="btn btn-ghost font-extrabold text-4xl">Car Hut</a>
+        <a className="btn btn-ghost font-extrabold lg:text-4xl">Grade Miners</a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{navLinks}</ul>
       </div>
       <div className="navbar-end">
-        <img className="w-12 h-12 rounded-full" src={UserImg} />
+        <img className="w-10 h-10 rounded-full" src={UserImg} />
 
         <Link to="/login">
+          <button className="btn">Log in</button>
           {/* <a onClick={handleLogOut} className="btn">
             {user ? 'Log out' : 'Login'}
           </a> */}
