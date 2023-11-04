@@ -11,7 +11,8 @@ const Register = () => {
     console.log(name, email, password, photo);
   };
   return (
-    <div>
+    <div className="max-w-lg mx-auto lg:mt-20 justify-center items-center">
+      <h1 className="text-center font-bold text-3xl">Please Register</h1>
       <form onSubmit={handleRegister} className="card-body">
         <div className="form-control">
           <label className="label">

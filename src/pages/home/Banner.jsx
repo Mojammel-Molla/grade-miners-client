@@ -3,7 +3,7 @@ import BannerImg from '../../assets/bannerImg.jpg';
 const Banner = () => {
   return (
     <div
-      className="hero min-h-screen rounded-lg"
+      className="hero min-h-screen rounded-lg mt-5"
       style={{
         backgroundImage: `url(${BannerImg})`,
       }}
