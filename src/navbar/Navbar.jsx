@@ -9,13 +9,13 @@ const Navbar = () => {
         </NavLink>
       </li>
       <li>
-        <NavLink to="" className="mr-5">
-          My assignment
+        <NavLink to="/assignments" className="mr-5">
+          Assignments
         </NavLink>
       </li>
       <li>
         <NavLink to="" className="mr-5">
-          Add assignment
+          Add Assignments
         </NavLink>
       </li>
     </>
