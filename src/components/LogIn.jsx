@@ -1,7 +1,10 @@
 import { Link } from 'react-router-dom';
 import { FcGoogle } from 'react-icons/fc';
+import { useContext } from 'react';
+import { AuthContext } from '../provider/AuthProvider';
 
 const LogIn = () => {
+  const { logInUser } = useContext(AuthContext);
   const handleLogIn = e => {
     e.preventDefault();
     const form = e.target;
@@ -9,6 +12,13 @@ const LogIn = () => {
     const password = form.password.value;
     const user = { email, password };
     console.log(user);
+    logInUser(email, password)
+      .then(res => {
+        console.log(res.data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   };
   return (
     <div className="card flex-shrink-0 w-full mx-auto lg:mt-20 max-w-lg shadow-2xl bg-base-100">
@@ -41,7 +51,7 @@ const LogIn = () => {
             <p>
               Do not have account?
               <Link
-                className=" text-blue-600 ml-2 label-text-alt link link-hover"
+                className=" text-green-600 ml-2 label-text-alt link link-hover"
                 to="/register"
               >
                 Register
@@ -50,7 +60,7 @@ const LogIn = () => {
           </label>
         </div>
         <div className="form-control mt-6">
-          <button className="btn btn-primary">Login</button>
+          <button className="btn text-white bg-green-600">Login</button>
         </div>
         <div className="flex justify-center mt-5">
           <button className="btn">
