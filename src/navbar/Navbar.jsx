@@ -28,6 +28,7 @@ const Navbar = () => {
       </li>
       <li className="mr-3">
         <NavLink
+          to="/create-assignment"
           className={({ isActive }) =>
             isActive ? 'text-green-600 underline' : ' '
           }

@@ -1,19 +1,5 @@
-import { useLoaderData } from 'react-router-dom';
-
-const AssignmentUpdate = () => {
-  const updateAssignment = useLoaderData();
-  const {
-    _id,
-    title,
-    subject,
-    marks,
-    description,
-    thumbnail_url,
-    difficulty_level,
-  } = updateAssignment || {};
-  console.log(updateAssignment);
-
-  const handleUpdate = e => {
+const CreateAssignment = () => {
+  const handleCreate = e => {
     e.preventDefault();
     const form = e.target;
     const subject = form.subject.value;
@@ -28,30 +14,30 @@ const AssignmentUpdate = () => {
     <div>
       <div>
         <h1 className="text-center text-4xl font-bold my-5">
-          Update Assignment
+          Create Assignment
         </h1>
-        <form onSubmit={handleUpdate} className="card-body mx-auto w-2/4">
+        <form onSubmit={handleCreate} className="card-body mx-auto w-2/4">
           <div className="flex gap-5 ">
             <div className="form-control w-2/4">
               <label className="label">
-                <span className="label-text">Subject Name:</span>
+                <span className="label-text">Name:</span>
               </label>
               <input
-                defaultValue={subject}
                 name="subject"
                 type="text"
+                placeholder="Subject name"
                 className="input input-bordered w-full"
                 required
               />
             </div>
             <div className="form-control w-2/4">
               <label className="label">
-                <span className="label-text">Assignment Title:</span>
+                <span className="label-text"> Title:</span>
               </label>
               <input
-                defaultValue={title}
                 name="title"
                 type="text"
+                placeholder="Assignment Title "
                 className="input input-bordered"
                 required
               />
@@ -60,24 +46,25 @@ const AssignmentUpdate = () => {
           <div className="flex gap-5">
             <div className="form-control w-2/4">
               <label className="label">
-                <span className="label-text">Assignment Photo:</span>
+                <span className="label-text">Photo:</span>
               </label>
               <input
-                defaultValue={thumbnail_url}
                 name="photo"
                 type="text"
+                placeholder="Assignment photo URL"
                 className="input input-bordered"
                 required
               />
             </div>
+
             <div className="form-control w-2/4">
               <label className="label">
-                <span className="label-text">Difficulty Level:</span>
+                <span className="label-text"> Level:</span>
               </label>
               <input
-                defaultValue={difficulty_level}
                 name="level"
                 type="text"
+                placeholder="Difficulty level"
                 className="input input-bordered"
                 required
               />
@@ -89,9 +76,9 @@ const AssignmentUpdate = () => {
                 <span className="label-text">Marks:</span>
               </label>
               <input
-                defaultValue={marks}
                 name="marks"
                 type="text"
+                placeholder="Assignment mark:"
                 className="input input-bordered"
                 required
               />
@@ -101,18 +88,31 @@ const AssignmentUpdate = () => {
                 <span className="label-text">Description:</span>
               </label>
               <input
-                defaultValue={description}
                 name="description"
                 type="text"
+                placeholder="Assignment description"
                 className="input input-bordered"
                 required
               />
             </div>
           </div>
+          {/* <div className="form-control w-4/4">
+            <label className="label">
+              <span className="label-text">Update Description:</span>
+            </label>
+            <input
+              // defaultValue={description}
+              name="description"
+              type="text"
+              placeholder="Short description"
+              className="input input-bordered"
+              required
+            />
+          </div> */}
 
           <div className="form-control mt-6">
             <button className="btn text-white bg-green-600 ">
-              Update Assignment
+              Create Assignment
             </button>
           </div>
         </form>
@@ -121,4 +121,4 @@ const AssignmentUpdate = () => {
   );
 };
 
-export default AssignmentUpdate;
+export default CreateAssignment;

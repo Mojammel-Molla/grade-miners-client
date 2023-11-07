@@ -14,7 +14,9 @@ const AssignmentDetail = () => {
   } = detailAssignment || {};
   return (
     <div className="w-1/2 mx-auto">
-      <h1>This is assignment Detail for {detailAssignment.title}</h1>
+      <h1 className="text-center my-10 lg:text-4xl font-bold my-5">
+        Assignment details
+      </h1>
       <div className="relative  lg:flex w-full md:w-full max-w-[48rem] flex-row rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
         <div className="relative  lg:w-2/5  m-0 overflow-hidden text-gray-700 bg-white lg:rounded-r-none shrink-0 rounded-xl bg-clip-border">
           <img
