@@ -31,7 +31,6 @@ const Navbar = () => {
           className={({ isActive }) =>
             isActive ? 'text-green-600 underline' : ' '
           }
-          to=""
         >
           Create Assignments
         </NavLink>

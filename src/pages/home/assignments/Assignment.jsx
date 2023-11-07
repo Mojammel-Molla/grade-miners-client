@@ -16,8 +16,8 @@ const Assignment = ({ assignment }) => {
         <img className="w-96 max-h-80" src={thumbnail_url} alt="assignment" />
       </figure>
       <div className="card-body">
-        <h2 className="card-title font-extrabold">{title}</h2>
-        <p className="font-normal">{description}</p>
+        <h2 className="card-title font-extrabold h-14">{title}</h2>
+        {/* <p className="font-normal">{description}</p> */}
         <div className="card-actions justify-between">
           <h4 className="">
             Mark: <span className="font-medium">{marks}/100</span>
