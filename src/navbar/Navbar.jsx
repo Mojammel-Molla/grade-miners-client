@@ -6,7 +6,7 @@ const Navbar = () => {
   const { user, logOutUser } = useContext(AuthContext);
   const navLinks = (
     <>
-      <li className="mr-5">
+      <li className="mr-3">
         <NavLink
           className={({ isActive }) =>
             isActive ? 'text-green-600 underline' : ' '
@@ -16,11 +16,35 @@ const Navbar = () => {
           Home
         </NavLink>
       </li>
-      <li className="mr-5">
-        <NavLink to="/assignments">Assignments</NavLink>
+      <li className="mr-3">
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? 'text-green-600 underline' : ' '
+          }
+          to="/assignments"
+        >
+          Assignments
+        </NavLink>
       </li>
-      <li className="mr-5">
-        <NavLink to="">Add Assignments</NavLink>
+      <li className="mr-3">
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? 'text-green-600 underline' : ' '
+          }
+          to=""
+        >
+          Create Assignments
+        </NavLink>
+      </li>
+      <li className="mr-3">
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? 'text-green-600 underline' : ' '
+          }
+          to="/submissions"
+        >
+          Submissions
+        </NavLink>
       </li>
     </>
   );
@@ -63,7 +87,19 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{navLinks}</ul>
       </div>
       <div className="navbar-end">
-        <img className="w-10 h-10 mr-3 rounded-full" src={UserImg} />
+        {user ? (
+          <div className="group/item">
+            <img
+              className="w-10 mx-auto h-10 mr-6 rounded-full  "
+              src={user?.photoURL}
+            />
+            <h4 className="mr-3 font-medium invisible group-hover/item:visible">
+              {user?.displayName}
+            </h4>
+          </div>
+        ) : (
+          <img className="w-10 h-10 mr-3 rounded-full" src={UserImg} />
+        )}
 
         <Link to="/login">
           <button

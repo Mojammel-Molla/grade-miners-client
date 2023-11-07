@@ -3,7 +3,8 @@ import MainLayOut from '../layOuts/MainLayOut';
 import Home from '../pages/home/Home';
 import LogIn from '../components/LogIn';
 import Register from '../components/Register';
-import Assignments from '../pages/Assignments';
+import AssignmentDetail from '../pages/home/assignments/AssignmentDetail';
+import AssignmentUpdate from '../pages/home/assignments/AssignmentUpdate';
 
 const router = createBrowserRouter([
   {
@@ -16,8 +17,14 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: '/assignments',
-        element: <Assignments />,
+        path: 'detail/:id',
+        element: <AssignmentDetail />,
+        loader: params => fetch(`http://localhost:5173/detail/${params.id}`),
+      },
+      {
+        path: 'update/:id',
+        element: <AssignmentUpdate />,
+        loader: params => fetch(`http://localhost:5173/update/${params.id}`),
       },
     ],
   },
