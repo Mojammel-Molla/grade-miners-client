@@ -1,14 +1,41 @@
+import { useContext, useState } from 'react';
+import { AuthContext } from '../../provider/AuthProvider';
+import DatePicker from 'react-datepicker';
+
+import 'react-datepicker/dist/react-datepicker.css';
+
 const CreateAssignment = () => {
+  const { user } = useContext(AuthContext);
+  const [selectedDate, setSelectedDate] = useState(null);
   const handleCreate = e => {
     e.preventDefault();
     const form = e.target;
     const subject = form.subject.value;
     const title = form.title.value;
     const photo = form.photo.value;
-    const marks = form.marks.value;
+    const date = form.date.value;
     const level = form.level.value;
     const description = form.description.value;
-    console.log(subject, title, photo, marks, level, description);
+    const email = user?.email;
+    console.log(subject, title, photo, date, level, description, email);
+    const assignment = {
+      subject,
+      title,
+      photo,
+      date,
+      level,
+      description,
+      email,
+    };
+    fetch('http://localhost:5000/assignments', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify(assignment),
+    })
+      .then(res => res.json())
+      .then(data => console.log(data));
   };
   return (
     <div>
@@ -61,27 +88,33 @@ const CreateAssignment = () => {
               <label className="label">
                 <span className="label-text"> Level:</span>
               </label>
-              <input
-                name="level"
-                type="text"
-                placeholder="Difficulty level"
-                className="input input-bordered"
-                required
-              />
+              <select name="level" className="select select-bordered">
+                <option disabled selected>
+                  Pick Difficulty Level
+                </option>
+                <option>Easy</option>
+                <option>Medium</option>
+                <option>Hard</option>
+              </select>
             </div>
           </div>
           <div className="flex gap-5">
             <div className="form-control w-2/4">
               <label className="label">
-                <span className="label-text">Marks:</span>
+                <span className="label-text">Date:</span>
               </label>
               <input
-                name="marks"
-                type="text"
-                placeholder="Assignment mark:"
+                name="date"
+                type="date"
+                placeholder="Choose a date:"
                 className="input input-bordered"
                 required
               />
+              {/* <DatePicker
+                name="date"
+                selected={selectedDate}
+                onChange={date => setSelectedDate(date)}
+              /> */}
             </div>
             <div className="form-control w-2/4">
               <label className="label">
@@ -96,19 +129,6 @@ const CreateAssignment = () => {
               />
             </div>
           </div>
-          {/* <div className="form-control w-4/4">
-            <label className="label">
-              <span className="label-text">Update Description:</span>
-            </label>
-            <input
-              // defaultValue={description}
-              name="description"
-              type="text"
-              placeholder="Short description"
-              className="input input-bordered"
-              required
-            />
-          </div> */}
 
           <div className="form-control mt-6">
             <button className="btn text-white bg-green-600 ">

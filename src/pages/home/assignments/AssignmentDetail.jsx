@@ -1,20 +1,45 @@
+import { useContext } from 'react';
 import { useLoaderData } from 'react-router-dom';
+import { AuthContext } from '../../../provider/AuthProvider';
 
 const AssignmentDetail = () => {
   const detailAssignment = useLoaderData();
   console.log(detailAssignment);
+  const { user } = useContext(AuthContext);
   const {
     _id,
     title,
+    date,
     subject,
-    marks,
     description,
     thumbnail_url,
     difficulty_level,
   } = detailAssignment || {};
+
+  const selected = {
+    title,
+    subject,
+    date,
+    description,
+    thumbnail_url,
+    difficulty_level,
+    email: user?.email,
+  };
+  const handleSelect = () => {
+    fetch('http://localhost:5000/selected', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify(selected),
+    })
+      .then(res => res.json())
+      .then(data => console.log(data));
+  };
+
   return (
     <div className="w-1/2 mx-auto">
-      <h1 className="text-center my-10 lg:text-4xl font-bold my-5">
+      <h1 className="text-center lg:my-10 lg:text-4xl font-bold my-5">
         Assignment details
       </h1>
       <div className="relative  lg:flex w-full md:w-full max-w-[48rem] flex-row rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
@@ -39,16 +64,24 @@ const AssignmentDetail = () => {
             {description}
           </p>
           <div className="card-actions  lg:mb-10 justify-between">
-            <h4 className="">
-              Mark: <span className="font-medium">{marks}/100</span>
-            </h4>
+            <div>
+              <h4 className="">
+                Mark: <span className="font-medium">100</span>
+              </h4>
+              <h3>
+                Date: <span className="font-medium">{date}</span>
+              </h3>
+            </div>
             <h4 className="">
               Level: <span className="font-medium">{difficulty_level}</span>
             </h4>
           </div>
 
           <div className="flex justify-center ">
-            <button className="btn bg-green-600 text-white md:mt-5 lg:mt-14">
+            <button
+              onClick={handleSelect}
+              className="btn bg-green-600 text-white md:mt-5 lg:mt-14"
+            >
               Take assignment
             </button>
           </div>

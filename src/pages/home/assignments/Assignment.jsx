@@ -1,15 +1,7 @@
 import { Link } from 'react-router-dom';
 
 const Assignment = ({ assignment }) => {
-  const {
-    _id,
-    title,
-    subject,
-    marks,
-    description,
-    thumbnail_url,
-    difficulty_level,
-  } = assignment || {};
+  const { _id, title, thumbnail_url, difficulty_level } = assignment || {};
   return (
     <div className="card w-96 bg-base-100 shadow-xl">
       <figure>
@@ -20,7 +12,7 @@ const Assignment = ({ assignment }) => {
         {/* <p className="font-normal">{description}</p> */}
         <div className="card-actions justify-between">
           <h4 className="">
-            Mark: <span className="font-medium">{marks}/100</span>
+            Marks: <span className="font-medium">100</span>
           </h4>
           <h4 className="">
             Level: <span className="font-medium">{difficulty_level}</span>

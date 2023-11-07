@@ -5,7 +5,9 @@ import LogIn from '../components/LogIn';
 import Register from '../components/Register';
 import AssignmentDetail from '../pages/home/assignments/AssignmentDetail';
 import AssignmentUpdate from '../pages/home/assignments/AssignmentUpdate';
-import CreateAssignment from '../pages/create-assignment/CreateAssignment';
+
+import Submission from '../pages/submission-page/Submission';
+import CreateAssignment from '../pages/create-assignment-page/CreateAssignment';
 
 const router = createBrowserRouter([
   {
@@ -23,7 +25,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'submissions',
-        element: <CreateAssignment />,
+        element: <Submission />,
       },
       {
         path: 'detail/:id',
