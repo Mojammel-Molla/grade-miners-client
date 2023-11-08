@@ -6,7 +6,7 @@ const AssignmentUpdate = () => {
     _id,
     title,
     subject,
-    marks,
+    date,
     description,
     thumbnail_url,
     difficulty_level,
@@ -19,10 +19,31 @@ const AssignmentUpdate = () => {
     const subject = form.subject.value;
     const title = form.title.value;
     const photo = form.photo.value;
-    const marks = form.marks.value;
+    const date = form.date.value;
     const level = form.level.value;
     const description = form.description.value;
-    console.log(subject, title, photo, marks, level, description);
+    console.log(subject, title, photo, date, level, description);
+
+    const updatedAssignment = {
+      subject,
+      title,
+      photo,
+      date,
+      level,
+      description,
+    };
+
+    fetch(` http://localhost:5000/update/${_id}`, {
+      method: 'PUT',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify(updatedAssignment),
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+      });
   };
   return (
     <div>
@@ -86,11 +107,11 @@ const AssignmentUpdate = () => {
           <div className="flex gap-5">
             <div className="form-control w-2/4">
               <label className="label">
-                <span className="label-text">Marks:</span>
+                <span className="label-text">Date:</span>
               </label>
               <input
-                defaultValue={marks}
-                name="marks"
+                defaultValue={date}
+                name="date"
                 type="text"
                 className="input input-bordered"
                 required

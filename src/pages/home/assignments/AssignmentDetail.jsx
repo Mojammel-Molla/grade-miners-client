@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../../provider/AuthProvider';
 
 const AssignmentDetail = () => {
@@ -16,26 +16,26 @@ const AssignmentDetail = () => {
     difficulty_level,
   } = detailAssignment || {};
 
-  const selected = {
-    title,
-    subject,
-    date,
-    description,
-    thumbnail_url,
-    difficulty_level,
-    email: user?.email,
-  };
-  const handleSelect = () => {
-    fetch('http://localhost:5000/selected', {
-      method: 'POST',
-      headers: {
-        'content-type': 'application/json',
-      },
-      body: JSON.stringify(selected),
-    })
-      .then(res => res.json())
-      .then(data => console.log(data));
-  };
+  // const selected = {
+  //   title,
+  //   subject,
+  //   date,
+  //   description,
+  //   thumbnail_url,
+  //   difficulty_level,
+  //   email: user?.email,
+  // };
+  // const handleSelect = () => {
+  //   fetch('http://localhost:5000/selected', {
+  //     method: 'POST',
+  //     headers: {
+  //       'content-type': 'application/json',
+  //     },
+  //     body: JSON.stringify(selected),
+  //   })
+  //     .then(res => res.json())
+  //     .then(data => console.log(data));
+  // };
 
   return (
     <div className="w-1/2 mx-auto">
@@ -78,12 +78,14 @@ const AssignmentDetail = () => {
           </div>
 
           <div className="flex justify-center ">
-            <button
-              onClick={handleSelect}
-              className="btn bg-green-600 text-white md:mt-5 lg:mt-14"
-            >
-              Take assignment
-            </button>
+            <Link to="/take-assignment">
+              <button
+                // onClick={handleSelect}
+                className="btn bg-green-600 text-white md:mt-5 lg:mt-14"
+              >
+                Take assignment
+              </button>
+            </Link>
           </div>
         </div>
       </div>

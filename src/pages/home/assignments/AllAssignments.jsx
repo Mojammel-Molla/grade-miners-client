@@ -13,7 +13,7 @@ const AllAssignments = () => {
     <div>
       <h1 className="text-4xl font-bold text-center my-5">All Assignments</h1>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-        {allAssignments.map(assignment => (
+        {allAssignments.slice(0).map(assignment => (
           <Assignment key={assignment._id} assignment={assignment}></Assignment>
         ))}
       </div>

@@ -8,6 +8,10 @@ import AssignmentUpdate from '../pages/home/assignments/AssignmentUpdate';
 
 import Submission from '../pages/submission-page/Submission';
 import CreateAssignment from '../pages/create-assignment-page/CreateAssignment';
+import MyAssignments from '../pages/my-assignments/MyAssignments';
+import SelectedAssignments from '../pages/selected-assignments/SelectedAssignments';
+import PrivateRoute from './PrivateRoute';
+import TakeAssignment from '../pages/create-assignment-page/TakeAssignment';
 
 const router = createBrowserRouter([
   {
@@ -21,21 +25,62 @@ const router = createBrowserRouter([
       },
       {
         path: 'create-assignment',
-        element: <CreateAssignment />,
+        element: (
+          <PrivateRoute>
+            <CreateAssignment />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: 'my-assignments',
+        element: (
+          <PrivateRoute>
+            <MyAssignments />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: 'selected-assignments',
+        element: (
+          <PrivateRoute>
+            <SelectedAssignments />
+          </PrivateRoute>
+        ),
       },
       {
         path: 'submissions',
-        element: <Submission />,
+        element: (
+          <PrivateRoute>
+            <Submission />
+          </PrivateRoute>
+        ),
+        loader: () => fetch('http://localhost:5000/submissions'),
+      },
+      {
+        path: 'take-assignment',
+        element: (
+          <PrivateRoute>
+            <TakeAssignment />
+          </PrivateRoute>
+        ),
       },
       {
         path: 'detail/:id',
-        element: <AssignmentDetail />,
+        element: (
+          <PrivateRoute>
+            <AssignmentDetail />
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/detail/${params.id}`),
       },
       {
         path: 'update/:id',
-        element: <AssignmentUpdate />,
+        element: (
+          <PrivateRoute>
+            <AssignmentUpdate />
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/update/${params.id}`),
       },

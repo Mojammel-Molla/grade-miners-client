@@ -1,12 +1,12 @@
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../provider/AuthProvider';
-import DatePicker from 'react-datepicker';
+// import DatePicker from 'react-datepicker';
 
 import 'react-datepicker/dist/react-datepicker.css';
 
 const CreateAssignment = () => {
   const { user } = useContext(AuthContext);
-  const [selectedDate, setSelectedDate] = useState(null);
+  // const [selectedDate, setSelectedDate] = useState(null);
   const handleCreate = e => {
     e.preventDefault();
     const form = e.target;

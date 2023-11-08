@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FcGoogle } from 'react-icons/fc';
 import { useContext } from 'react';
 import { AuthContext } from '../provider/AuthProvider';
@@ -6,6 +6,7 @@ import toast, { Toaster } from 'react-hot-toast';
 const LogIn = () => {
   const { logInUser, handleGoogleLogIn } = useContext(AuthContext);
   const navigate = useNavigate();
+  const location = useLocation();
   const handleLogIn = e => {
     e.preventDefault();
     const form = e.target;
@@ -27,15 +28,17 @@ const LogIn = () => {
         .then(res => {
           console.log(res.user);
           toast.success('User log in successfully');
-          navigate('/');
+          navigate(location?.state ? location?.state : '/');
         })
         .catch(err => {
           console.log(err);
         });
     }
   };
+
   const handleGoogle = () => {
     handleGoogleLogIn();
+    navigate(location?.state ? location?.state : '/');
   };
   return (
     <div className="card flex-shrink-0 w-full mx-auto lg:mt-20 max-w-lg shadow-2xl bg-base-100">
