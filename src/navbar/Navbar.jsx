@@ -21,9 +21,19 @@ const Navbar = () => {
           className={({ isActive }) =>
             isActive ? 'text-green-600 underline' : ' '
           }
-          to="/selected-assignments"
+          to="/assignments"
         >
           Assignments
+        </NavLink>
+      </li>
+      <li className="mr-3">
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? 'text-green-600 underline' : ' '
+          }
+          to="/reviewed-assignment"
+        >
+          Review Assignments
         </NavLink>
       </li>
       <li className="mr-3">

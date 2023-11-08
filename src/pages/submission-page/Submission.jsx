@@ -5,15 +5,14 @@ const Submission = () => {
   const submittedItems = useLoaderData();
   return (
     <div>
-      <h1>This is submission page{submittedItems.length}</h1>
       <div>
-        <table className="table lg:ml-20">
+        <table className="table space-x-5 lg:ml-20">
           <thead>
             <tr>
               <th>Email</th>
-              <th>Link</th>
+              <th className="">Link</th>
               <th>Comment</th>
-              <th>Status</th>
+              <th className="">Status</th>
             </tr>
           </thead>
         </table>

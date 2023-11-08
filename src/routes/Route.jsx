@@ -12,6 +12,9 @@ import MyAssignments from '../pages/my-assignments/MyAssignments';
 import SelectedAssignments from '../pages/selected-assignments/SelectedAssignments';
 import PrivateRoute from './PrivateRoute';
 import TakeAssignment from '../pages/create-assignment-page/TakeAssignment';
+import AllAssignments from '../pages/home/assignments/AllAssignments';
+import ReviewedAssignment from '../pages/revivew-assignment/ReviewedAssignment';
+import AssignmentMarks from '../pages/submission-page/AssignmentMarks';
 
 const router = createBrowserRouter([
   {
@@ -32,6 +35,14 @@ const router = createBrowserRouter([
         ),
       },
       {
+        path: 'reviewed-assignment',
+        element: (
+          <PrivateRoute>
+            <ReviewedAssignment />
+          </PrivateRoute>
+        ),
+      },
+      {
         path: 'my-assignments',
         element: (
           <PrivateRoute>
@@ -40,10 +51,19 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: 'selected-assignments',
+        path: 'assignments',
         element: (
           <PrivateRoute>
-            <SelectedAssignments />
+            <AllAssignments />
+            {/* <SelectedAssignments /> */}
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: 'assignment-mark',
+        element: (
+          <PrivateRoute>
+            <AssignmentMarks />
           </PrivateRoute>
         ),
       },

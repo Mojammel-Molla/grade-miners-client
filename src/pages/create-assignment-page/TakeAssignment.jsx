@@ -19,7 +19,12 @@ const TakeAssignment = () => {
       body: JSON.stringify(submitted),
     })
       .then(res => res.json())
-      .then(data => console.log(data));
+      .then(data => {
+        console.log(data);
+        if (data.insertedId) {
+          alert('Your assignment has been submitted');
+        }
+      });
   };
 
   return (
