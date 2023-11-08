@@ -1,5 +1,5 @@
 import { useLoaderData } from 'react-router-dom';
-
+import Swal from 'sweetalert2';
 const AssignmentMarks = () => {
   const giveMarks = useLoaderData();
   console.log(giveMarks);
@@ -22,7 +22,15 @@ const AssignmentMarks = () => {
       .then(data => {
         console.log(data);
         if (data.modifiedCount > 0) {
-          alert('Marks given successfully');
+          if (data.insertedId) {
+            Swal.fire({
+              position: 'top-center',
+              icon: 'success',
+              title: 'Your assignment has been created',
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          }
         }
       });
   };

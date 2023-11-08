@@ -1,23 +1,39 @@
 import { useState } from 'react';
-
+import Swal from 'sweetalert2';
 const SingleAssignment = ({ item }) => {
   const [assignment, setAssignment] = useState(item);
 
   const { _id, link, feedback, email, marks } = assignment || {};
   console.log('From my-assignment page', assignment);
-  const handleDelete = () => {
-    fetch(`http://localhost:5000/submissions/${_id}`, {
-      method: 'DELETE',
-    })
-      .then(res => res.json())
-      .then(data => {
-        console.log(data);
-        if (data.deletedCount > 0) {
-          alert('Your assignment deleted successfully');
-          const remaining = assignment.filter(item => item?._id !== _id);
-          setAssignment(remaining);
-        }
-      });
+  const handleDelete = _id => {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
+    }).then(result => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/submissions/${_id}`, {
+          method: 'DELETE',
+        })
+          .then(res => res.json())
+          .then(data => {
+            console.log(data);
+            if (data.deletedCount > 0) {
+              Swal.fire(
+                'Deleted!',
+                'Your product has been deleted.',
+                'success'
+              );
+            }
+            const remaining = assignment.filter(item => item?._id !== _id);
+            setAssignment(remaining);
+          });
+      }
+    });
   };
 
   return (

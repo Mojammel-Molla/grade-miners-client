@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../provider/AuthProvider';
 // import DatePicker from 'react-datepicker';
-
+import Swal from 'sweetalert2';
 import 'react-datepicker/dist/react-datepicker.css';
 
 const CreateAssignment = () => {
@@ -35,7 +35,18 @@ const CreateAssignment = () => {
       body: JSON.stringify(assignment),
     })
       .then(res => res.json())
-      .then(data => console.log(data));
+      .then(data => {
+        console.log(data);
+        if (data.insertedId) {
+          Swal.fire({
+            position: 'top-center',
+            icon: 'success',
+            title: 'Your assignment has been created',
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      });
   };
   return (
     <div>

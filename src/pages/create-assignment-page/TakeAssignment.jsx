@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { AuthContext } from '../../provider/AuthProvider';
-
+import Swal from 'sweetalert2';
 const TakeAssignment = () => {
   const { user } = useContext(AuthContext);
   const handleSubmit = e => {
@@ -22,7 +22,13 @@ const TakeAssignment = () => {
       .then(data => {
         console.log(data);
         if (data.insertedId) {
-          alert('Your assignment has been submitted');
+          Swal.fire({
+            position: 'top-center',
+            icon: 'success',
+            title: 'Your assignment has been submitted',
+            showConfirmButton: false,
+            timer: 1500,
+          });
         }
       });
   };
