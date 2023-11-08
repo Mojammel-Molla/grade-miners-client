@@ -12,19 +12,9 @@ const MyAssignments = () => {
       .then(data => setAssignment(data));
   }, [url]);
   console.log(assignment);
+
   return (
     <div>
-      <table className="table  max-w-7xl">
-        <thead>
-          <tr>
-            <th>Email</th>
-            <th className="">Link</th>
-            <th></th>
-            <th>Comment</th>
-            <th className="">Status</th>
-          </tr>
-        </thead>
-      </table>
       <div>
         {assignment.map(item => (
           <SingleAssignment key={item._id} item={item}></SingleAssignment>

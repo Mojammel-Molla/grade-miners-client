@@ -6,16 +6,6 @@ const Submission = () => {
   return (
     <div>
       <div>
-        <table className="table space-x-5 lg:ml-20">
-          <thead>
-            <tr>
-              <th>Email</th>
-              <th className="">Link</th>
-              <th>Comment</th>
-              <th className="">Status</th>
-            </tr>
-          </thead>
-        </table>
         {submittedItems.map(item => (
           <SingleSubmit key={item._id} item={item}></SingleSubmit>
         ))}

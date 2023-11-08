@@ -9,11 +9,10 @@ import AssignmentUpdate from '../pages/home/assignments/AssignmentUpdate';
 import Submission from '../pages/submission-page/Submission';
 import CreateAssignment from '../pages/create-assignment-page/CreateAssignment';
 import MyAssignments from '../pages/my-assignments/MyAssignments';
-import SelectedAssignments from '../pages/selected-assignments/SelectedAssignments';
 import PrivateRoute from './PrivateRoute';
 import TakeAssignment from '../pages/create-assignment-page/TakeAssignment';
 import AllAssignments from '../pages/home/assignments/AllAssignments';
-import ReviewedAssignment from '../pages/revivew-assignment/ReviewedAssignment';
+import ReviewedAssignment from '../pages/review-assignment/ReviewedAssignment';
 import AssignmentMarks from '../pages/submission-page/AssignmentMarks';
 
 const router = createBrowserRouter([
@@ -41,6 +40,7 @@ const router = createBrowserRouter([
             <ReviewedAssignment />
           </PrivateRoute>
         ),
+        loader: () => fetch('http://localhost:5000/reviewed-assignments'),
       },
       {
         path: 'my-assignments',
@@ -60,12 +60,14 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: 'assignment-mark',
+        path: 'submissions/:id',
         element: (
           <PrivateRoute>
             <AssignmentMarks />
           </PrivateRoute>
         ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/submissions/${params.id}`),
       },
       {
         path: 'submissions',
