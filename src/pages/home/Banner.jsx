@@ -10,12 +10,15 @@ const Banner = () => {
     >
       <div className="hero-overlay rounded-lg bg-opacity-60"></div>
       <div className="hero-content text-center text-neutral-content">
-        <div className="max-w-md">
-          <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
+        <div className="max-w-xl">
+          <h1 className="mb-5 lg:text-5xl text-green-400 font-bold">
+            Connecting Students with Assignments
+          </h1>
           <p className="mb-5">
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-            excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
-            a id nisi.
+            Welcome to Grade miners, your academic assignment solution. Find
+            assignments across subjects and difficulty levels, simplifying your
+            academic journey. Explore, learn, and excel with Grade miners, your
+            path to academic success!
           </p>
           {/* <button className="btn btn-primary">Get Started</button> */}
         </div>

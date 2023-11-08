@@ -14,12 +14,13 @@ import TakeAssignment from '../pages/create-assignment-page/TakeAssignment';
 import AllAssignments from '../pages/home/assignments/AllAssignments';
 import ReviewedAssignment from '../pages/review-assignment/ReviewedAssignment';
 import AssignmentMarks from '../pages/submission-page/AssignmentMarks';
+import ErrorPage from '../pages/error-page/ErrorPage';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <MainLayOut />,
-    // errorElement: <ErrorPage />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: '/',
@@ -40,7 +41,8 @@ const router = createBrowserRouter([
             <ReviewedAssignment />
           </PrivateRoute>
         ),
-        loader: () => fetch('http://localhost:5000/reviewed-assignments'),
+        loader: () =>
+          fetch('https://grade-miners-server.vercel.app/reviewed-assignments'),
       },
       {
         path: 'my-assignments',
@@ -67,7 +69,9 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/submissions/${params.id}`),
+          fetch(
+            `https://grade-miners-server.vercel.app/submissions/${params.id}`
+          ),
       },
       {
         path: 'submissions',
@@ -76,7 +80,8 @@ const router = createBrowserRouter([
             <Submission />
           </PrivateRoute>
         ),
-        loader: () => fetch('http://localhost:5000/submissions'),
+        loader: () =>
+          fetch('https://grade-miners-server.vercel.app/submissions'),
       },
       {
         path: 'take-assignment',
@@ -94,7 +99,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/detail/${params.id}`),
+          fetch(`https://grade-miners-server.vercel.app/detail/${params.id}`),
       },
       {
         path: 'update/:id',
@@ -104,7 +109,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/update/${params.id}`),
+          fetch(`https://grade-miners-server.vercel.app/update/${params.id}`),
       },
     ],
   },

@@ -26,7 +26,7 @@ const AssignmentDetail = () => {
   //   email: user?.email,
   // };
   // const handleSelect = () => {
-  //   fetch('http://localhost:5000/selected', {
+  //   fetch('https://grade-miners-server.vercel.app/selected', {
   //     method: 'POST',
   //     headers: {
   //       'content-type': 'application/json',

@@ -1,34 +1,39 @@
 const FAQSection = () => {
   return (
-    <div>
+    <div className="my-10">
       <h1 className="text-4xl font-bold text-center my-5">FAQ section</h1>
       <div className="flex justify-around w-full">
         <div className="w-1/3">
           <div className="collapse collapse-arrow bg-base-200">
             <input type="radio" name="my-accordion-2" checked="checked" />
             <div className="collapse-title text-xl font-medium">
-              Click to open this one and close others
+              What is AssignmentHub, and how does it work?
             </div>
             <div className="collapse-content">
-              <p>hello</p>
+              <p>
+                AssignmentHub connects students with assignments, simplifying
+                the academic journey.
+              </p>
             </div>
           </div>
           <div className="collapse collapse-arrow bg-base-200">
             <input type="radio" name="my-accordion-2" />
             <div className="collapse-title text-xl font-medium">
-              Click to open this one and close others
+              Is AssignmentHub free to use?
             </div>
             <div className="collapse-content">
-              <p>hello</p>
+              <p>Yes, AssignmentHub is free with optional premium features.</p>
             </div>
           </div>
           <div className="collapse collapse-arrow bg-base-200">
             <input type="radio" name="my-accordion-2" />
             <div className="collapse-title text-xl font-medium">
-              Click to open this one and close others
+              How do I find assignments that match my needs?
             </div>
             <div className="collapse-content">
-              <p>hello</p>
+              <p>
+                Search by subject, difficulty, or keywords for a perfect match.
+              </p>
             </div>
           </div>
         </div>
@@ -36,28 +41,30 @@ const FAQSection = () => {
           <div className="collapse collapse-arrow bg-base-200">
             <input type="radio" name="my-accordion-2" checked="checked" />
             <div className="collapse-title text-xl font-medium">
-              Click to open this one and close others
+              Can I submit my own assignments to share with others?
             </div>
             <div className="collapse-content">
-              <p>hello</p>
+              <p>Absolutely, sharing your assignments is encouraged.</p>
             </div>
           </div>
           <div className="collapse collapse-arrow bg-base-200">
             <input type="radio" name="my-accordion-2" />
             <div className="collapse-title text-xl font-medium">
-              Click to open this one and close others
+              Are there resources to help me with assignment-related questions?
             </div>
             <div className="collapse-content">
-              <p>hello</p>
+              <p>
+                Explore guides and forums for assistance and community support.
+              </p>
             </div>
           </div>
           <div className="collapse collapse-arrow bg-base-200">
             <input type="radio" name="my-accordion-2" />
             <div className="collapse-title text-xl font-medium">
-              Click to open this one and close others
+              What if I have a question or issue with the platform?
             </div>
             <div className="collapse-content">
-              <p>hello</p>
+              <p>Contact our support team for prompt assistance.</p>
             </div>
           </div>
         </div>

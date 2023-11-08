@@ -33,7 +33,7 @@ const AssignmentUpdate = () => {
       description,
     };
 
-    fetch(` http://localhost:5000/update/${_id}`, {
+    fetch(` https://grade-miners-server.vercel.app/update/${_id}`, {
       method: 'PUT',
       headers: {
         'content-type': 'application/json',

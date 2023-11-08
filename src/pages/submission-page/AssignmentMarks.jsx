@@ -11,13 +11,16 @@ const AssignmentMarks = () => {
 
     const submitMarks = { marks, feedback, status: 'Confirm' };
     console.log(submitMarks);
-    fetch(`http://localhost:5000/submissions/${giveMarks?._id}`, {
-      method: 'PUT',
-      headers: {
-        'content-type': 'application/json',
-      },
-      body: JSON.stringify(submitMarks),
-    })
+    fetch(
+      `https://grade-miners-server.vercel.app/submissions/${giveMarks?._id}`,
+      {
+        method: 'PUT',
+        headers: {
+          'content-type': 'application/json',
+        },
+        body: JSON.stringify(submitMarks),
+      }
+    )
       .then(res => res.json())
       .then(data => {
         console.log(data);

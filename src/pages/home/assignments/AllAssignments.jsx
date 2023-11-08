@@ -4,7 +4,7 @@ import Assignment from './Assignment';
 const AllAssignments = () => {
   const [allAssignments, setAllAssignments] = useState([]);
   useEffect(() => {
-    fetch('http://localhost:5000/assignments')
+    fetch('https://grade-miners-server.vercel.app/assignments')
       .then(res => res.json())
       .then(data => setAllAssignments(data));
   }, []);

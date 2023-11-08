@@ -38,6 +38,7 @@ const LogIn = () => {
 
   const handleGoogle = () => {
     handleGoogleLogIn();
+    toast.success('User log in successfully');
     navigate(location?.state ? location?.state : '/');
   };
   return (

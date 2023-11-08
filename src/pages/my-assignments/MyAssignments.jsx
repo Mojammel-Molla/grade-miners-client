@@ -5,7 +5,7 @@ import SingleAssignment from './SingleAssignment';
 const MyAssignments = () => {
   const { user } = useContext(AuthContext);
   const [assignment, setAssignment] = useState([]);
-  const url = `http://localhost:5000/my-assignments?email=${user?.email}`;
+  const url = `https://grade-miners-server.vercel.app/my-assignments?email=${user?.email}`;
   useEffect(() => {
     fetch(url)
       .then(res => res.json())

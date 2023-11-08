@@ -1,8 +1,12 @@
-# React + Vite
+-Live site: [https://grade-miners.web.app]
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- In this website user can add assignment and delete specific assignment.
 
-Currently, two official plugins are available:
+- User can see only his/her selected assignment.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- User can update any showing assignment data as they wish or choose to update.
+
+- User can take any assignment and can submit with pdf link.
+
+- If assignment does not reviewed by any one its status will be pending after
+  giving marks it will show status confirm.
