@@ -11,7 +11,7 @@ const TakeAssignment = () => {
     const email = user?.email;
     const submitted = { link, comment, email, status: 'pending' };
     console.log(submitted);
-    fetch('https://grade-miners-server.vercel.app/submissions', {
+    fetch('http://localhost:5000/submissions', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
@@ -29,6 +29,7 @@ const TakeAssignment = () => {
             showConfirmButton: false,
             timer: 1500,
           });
+          form.rest();
         }
       });
   };

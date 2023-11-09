@@ -27,7 +27,7 @@ const CreateAssignment = () => {
       description,
       email,
     };
-    fetch('https://grade-miners-server.vercel.app/assignments', {
+    fetch('http://localhost:5000/assignments', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
@@ -45,6 +45,7 @@ const CreateAssignment = () => {
             showConfirmButton: false,
             timer: 1500,
           });
+          form.rest();
         }
       });
   };
@@ -99,7 +100,7 @@ const CreateAssignment = () => {
               <label className="label">
                 <span className="label-text"> Level:</span>
               </label>
-              <select name="level" className="select select-bordered">
+              <select name="level" required className="select select-bordered">
                 <option disabled selected>
                   Pick Difficulty Level
                 </option>

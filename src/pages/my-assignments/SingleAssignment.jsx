@@ -5,7 +5,7 @@ const SingleAssignment = ({ item }) => {
 
   const { _id, link, feedback, email, marks } = assignment || {};
   console.log('From my-assignment page', assignment);
-  const handleDelete = _id => {
+  const handleDelete = id => {
     Swal.fire({
       title: 'Are you sure?',
       text: "You won't be able to revert this!",
@@ -16,7 +16,7 @@ const SingleAssignment = ({ item }) => {
       confirmButtonText: 'Yes, delete it!',
     }).then(result => {
       if (result.isConfirmed) {
-        fetch(`https://grade-miners-server.vercel.app/submissions/${_id}`, {
+        fetch(`http://localhost:5000/submissions/${_id}`, {
           method: 'DELETE',
         })
           .then(res => res.json())
@@ -25,11 +25,11 @@ const SingleAssignment = ({ item }) => {
             if (data.deletedCount > 0) {
               Swal.fire(
                 'Deleted!',
-                'Your product has been deleted.',
+                'Your assignment has been deleted.',
                 'success'
               );
             }
-            const remaining = assignment.filter(item => item?._id !== _id);
+            const remaining = assignment.filter(items => items._id !== id);
             setAssignment(remaining);
           });
       }

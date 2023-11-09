@@ -1,5 +1,5 @@
 import { useLoaderData } from 'react-router-dom';
-
+import Swal from 'sweetalert2';
 const AssignmentUpdate = () => {
   const updateAssignment = useLoaderData();
   const {
@@ -33,7 +33,7 @@ const AssignmentUpdate = () => {
       description,
     };
 
-    fetch(` https://grade-miners-server.vercel.app/update/${_id}`, {
+    fetch(` http://localhost:5000/update/${_id}`, {
       method: 'PUT',
       headers: {
         'content-type': 'application/json',
@@ -43,6 +43,16 @@ const AssignmentUpdate = () => {
       .then(res => res.json())
       .then(data => {
         console.log(data);
+        if (data.modifiedCount > 0) {
+          Swal.fire({
+            position: 'top-center',
+            icon: 'success',
+            title: 'Your assignment has been updated',
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          form.rest();
+        }
       });
   };
   return (

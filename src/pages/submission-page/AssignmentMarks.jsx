@@ -9,31 +9,26 @@ const AssignmentMarks = () => {
     const marks = form.marks.value;
     const feedback = form.feedback.value;
 
-    const submitMarks = { marks, feedback, status: 'Confirm' };
+    const submitMarks = { marks, feedback, status: 'Complete' };
     console.log(submitMarks);
-    fetch(
-      `https://grade-miners-server.vercel.app/submissions/${giveMarks?._id}`,
-      {
-        method: 'PUT',
-        headers: {
-          'content-type': 'application/json',
-        },
-        body: JSON.stringify(submitMarks),
-      }
-    )
+    fetch(`http://localhost:5000/submissions/${giveMarks?._id}`, {
+      method: 'PUT',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify(submitMarks),
+    })
       .then(res => res.json())
       .then(data => {
         console.log(data);
         if (data.modifiedCount > 0) {
-          if (data.insertedId) {
-            Swal.fire({
-              position: 'top-center',
-              icon: 'success',
-              title: 'Your assignment has been created',
-              showConfirmButton: false,
-              timer: 1500,
-            });
-          }
+          Swal.fire({
+            position: 'top-center',
+            icon: 'success',
+            title: 'Assignment marks has been given!',
+            showConfirmButton: false,
+            timer: 1500,
+          });
         }
       });
   };

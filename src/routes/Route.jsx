@@ -41,8 +41,7 @@ const router = createBrowserRouter([
             <ReviewedAssignment />
           </PrivateRoute>
         ),
-        loader: () =>
-          fetch('https://grade-miners-server.vercel.app/reviewed-assignments'),
+        loader: () => fetch('http://localhost:5000/reviewed-assignments'),
       },
       {
         path: 'my-assignments',
@@ -69,9 +68,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(
-            `https://grade-miners-server.vercel.app/submissions/${params.id}`
-          ),
+          fetch(`http://localhost:5000/submissions/${params.id}`),
       },
       {
         path: 'submissions',
@@ -80,8 +77,7 @@ const router = createBrowserRouter([
             <Submission />
           </PrivateRoute>
         ),
-        loader: () =>
-          fetch('https://grade-miners-server.vercel.app/submissions'),
+        loader: () => fetch('http://localhost:5000/submissions'),
       },
       {
         path: 'take-assignment',
@@ -99,7 +95,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`https://grade-miners-server.vercel.app/detail/${params.id}`),
+          fetch(`http://localhost:5000/detail/${params.id}`),
       },
       {
         path: 'update/:id',
@@ -109,7 +105,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`https://grade-miners-server.vercel.app/update/${params.id}`),
+          fetch(`http://localhost:5000/update/${params.id}`),
       },
     ],
   },
